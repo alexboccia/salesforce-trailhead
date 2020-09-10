@@ -1,0 +1,9 @@
+// Create an Apex trigger for Account that matches Shipping Address Postal Code with Billing Address Postal Code based on a custom field.
+// Criar campo  no objeto Account 'Match Billing Address'
+
+trigger AccountAddressTrigger on Account (before insert, before update) {
+    for(account add:Trigger.New){		
+    		if(add.Match_Billing_Address__c == True)
+           	add.ShippingPostalCode = add.BillingPostalCode; 
+		}
+}
